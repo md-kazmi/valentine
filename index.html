@@ -6,120 +6,140 @@
 <title>Be My Valentine ❤️</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #ff758c, #ff7eb3);
-        font-family: 'Segoe UI', sans-serif;
-        text-align: center;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
 
-    .card {
-        width: 90%;
-        max-width: 380px;
-        background: white;
-        padding: 30px 20px;
-        border-radius: 22px;
-        box-shadow: 0 14px 35px rgba(0,0,0,0.25);
-        position: relative;
-    }
+/* 🎶 Music overlay */
+#musicOverlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    color: white;
+}
 
-    .heart {
-        font-size: 50px;
-        animation: pulse 1.5s infinite;
-    }
+#musicOverlay button {
+    padding: 14px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #e63946;
+    cursor: pointer;
+}
 
-    .name {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 10px 0;
-        color: #e63946;
-        text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
-        animation: glow 2s infinite alternate;
-    }
+/* 💌 Card */
+.card {
+    width: 90%;
+    max-width: 380px;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 22px;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+    position: relative;
+}
 
-    h1 {
-        margin: 10px 0;
-        color: #e63946;
-        font-size: 24px;
-    }
+.heart {
+    font-size: 50px;
+    animation: pulse 1.5s infinite;
+}
 
-    p {
-        font-size: 16px;
-        color: #444;
-        line-height: 1.6;
-    }
+.name {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #e63946;
+    text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+    animation: glow 2s infinite alternate;
+}
 
-    .question {
-        font-size: 18px;
-        margin-top: 15px;
-        font-weight: bold;
-    }
+p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+}
 
-    .buttons {
-        margin-top: 25px;
-        position: relative;
-        height: 80px;
-    }
+.question {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: bold;
+}
 
-    button {
-        padding: 14px 28px;
-        font-size: 16px;
-        border-radius: 30px;
-        border: none;
-        cursor: pointer;
-        transition: 0.3s;
-        position: absolute;
-    }
+.buttons {
+    margin-top: 25px;
+    position: relative;
+    height: 80px;
+}
 
-    #yesBtn {
-        background: #e63946;
-        color: white;
-        left: 0;
-    }
+button {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+}
 
-    #yesBtn:active {
-        transform: scale(0.95);
-    }
+#yesBtn {
+    background: #e63946;
+    color: white;
+    left: 0;
+}
 
-    #noBtn {
-        background: #adb5bd;
-        color: white;
-        right: 0;
-    }
+#noBtn {
+    background: #adb5bd;
+    color: white;
+    right: 0;
+}
 
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
+/* ✨ Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
 
-    @keyframes glow {
-        from {
-            text-shadow: 0 0 5px #ff7eb3, 0 0 10px #ff7eb3;
-        }
-        to {
-            text-shadow: 0 0 15px #ff758c, 0 0 30px #ff758c;
-        }
-    }
+@keyframes glow {
+    from { text-shadow: 0 0 5px #ff7eb3; }
+    to { text-shadow: 0 0 20px #ff758c; }
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🎶 Background Music -->
-<audio id="bgMusic" autoplay loop>
+<!-- 🎶 Music Start Screen -->
+<div id="musicOverlay">
+    <div>
+        <h1>❤️ One Tap for Love ❤️</h1>
+        <p>Tap to start the music 🎶</p>
+        <button onclick="startMusic()">Start 💕</button>
+    </div>
+</div>
+
+<!-- 🎶 Audio -->
+<audio id="bgMusic" loop>
     <source src="love.mp3" type="audio/mpeg">
 </audio>
 
+<!-- 💌 Valentine Card -->
 <div class="card">
     <div class="heart">❤️</div>
 
@@ -127,8 +147,8 @@
     <div class="name">Shiza 💖</div>
 
     <p>
-        From the moment you entered my life, everything became brighter.
-        You are my peace, my smile, my forever 💕
+        From the moment you came into my life,
+        everything feels warmer and brighter 💕
     </p>
 
     <p class="question">
@@ -142,62 +162,53 @@
 </div>
 
 <script>
-    let noCount = 0;
+let noCount = 0;
 
-    // Force autoplay on mobile (after first tap)
-    document.addEventListener("click", () => {
-        const music = document.getElementById("bgMusic");
-        if (music.paused) {
-            music.play();
-        }
-    }, { once: true });
+function startMusic() {
+    document.getElementById("bgMusic").play();
+    document.getElementById("musicOverlay").style.display = "none";
+}
 
-    function sayYes() {
-        document.body.innerHTML = `
-            <div style="
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                height:100vh;
-                background:linear-gradient(135deg,#ff758c,#ff7eb3);
-                font-family:'Segoe UI',sans-serif;
-                text-align:center;">
-                <div style="color:white;padding:20px;">
-                    <h1 style="font-size:32px;">Yayyy! ❤️🥰</h1>
-                    <p style="font-size:18px;">
-                        I knew you’d say YES 💖<br><br>
-                        Happy Valentine’s Day, my love 🌹
-                    </p>
-                </div>
+function sayYes() {
+    document.body.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:linear-gradient(135deg,#ff758c,#ff7eb3);
+            font-family:'Segoe UI',sans-serif;
+            text-align:center;">
+            <div style="color:white;padding:20px;">
+                <h1 style="font-size:32px;">Yayyy! ❤️🥰</h1>
+                <p style="font-size:18px;">
+                    I knew you’d say YES 💖<br><br>
+                    Happy Valentine’s Day, my love 🌹
+                </p>
             </div>
-        `;
+        </div>
+    `;
+}
+
+function moveNo() {
+    const noBtn = document.getElementById("noBtn");
+    noCount++;
+
+    const x = Math.random() * 230;
+    const y = Math.random() * 40;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    if (noCount === 2) noBtn.innerText = "Are you sure? 😳";
+    else if (noCount === 4) noBtn.innerText = "Think again 🙈";
+    else if (noCount === 6) noBtn.innerText = "Okay okay 😅";
+    else if (noCount >= 7) {
+        noBtn.innerText = "Yes 😍";
+        noBtn.style.background = "#e63946";
+        noBtn.onclick = sayYes;
     }
-
-    function moveNo() {
-        const noBtn = document.getElementById("noBtn");
-        noCount++;
-
-        const x = Math.random() * 230;
-        const y = Math.random() * 40;
-
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-
-        if (noCount === 2) {
-            noBtn.innerText = "Are you sure? 😳";
-        } 
-        else if (noCount === 4) {
-            noBtn.innerText = "Think again 🙈";
-        } 
-        else if (noCount === 6) {
-            noBtn.innerText = "Okay okay 😅";
-        } 
-        else if (noCount >= 7) {
-            noBtn.innerText = "Yes 😍";
-            noBtn.style.background = "#e63946";
-            noBtn.onclick = sayYes;
-        }
-    }
+}
 </script>
 
 </body>
