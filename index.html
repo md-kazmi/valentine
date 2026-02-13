@@ -1,186 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I’m Sorry ❤️</title>
+  <meta charset="UTF-8">
+  <title>Yes or No 😄</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+    }
 
-<style>
-* { box-sizing: border-box; }
+    .container {
+      text-align: center;
+      position: relative;
+    }
 
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-    overflow: hidden;
-}
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      margin: 10px;
+    }
 
-/* Music overlay */
-#musicOverlay {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    color: white;
-}
+    #yes {
+      background-color: #4CAF50;
+      color: white;
+    }
 
-#musicOverlay button {
-    padding: 14px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    background: white;
-    color: #764ba2;
-    cursor: pointer;
-}
-
-/* Card */
-.card {
-    width: 90%;
-    max-width: 420px;
-    background: white;
-    padding: 30px 22px;
-    border-radius: 22px;
-    box-shadow: 0 14px 35px rgba(0,0,0,0.25);
-}
-
-.heart {
-    font-size: 42px;
-    animation: pulse 2s infinite;
-}
-
-.name {
-    font-size: 26px;
-    font-weight: bold;
-    margin: 12px 0;
-    color: #764ba2;
-    text-shadow: 0 0 10px #cdb4db;
-    animation: glow 2.5s infinite alternate;
-}
-
-h1 {
-    color: #333;
-    margin: 10px 0;
-    font-size: 22px;
-}
-
-.message {
-    font-size: 15px;
-    color: #444;
-    line-height: 1.6;
-    text-align: left;
-    margin-top: 10px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 14px 30px;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    background: #764ba2;
-    color: white;
-    cursor: pointer;
-}
-
-/* Animations */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 5px #cdb4db; }
-    to { text-shadow: 0 0 20px #764ba2; }
-}
-</style>
+    #no {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- Music Start -->
-<div id="musicOverlay">
-    <div>
-        <h1>🎧 One Tap</h1>
-        <p>Tap to hear my apology 🎶</p>
-        <button onclick="startMusic()">Start</button>
-    </div>
-</div>
+  <div class="container">
+    <h2>Will you say Yes? 😊</h2>
+    <button id="yes" onclick="alert('Yay! ❤️')">Yes</button>
+    <button id="no">No</button>
+  </div>
 
-<!-- Audio -->
-<audio id="bgMusic" loop>
-    <source src="love.mp3" type="audio/mpeg">
-</audio>
+  <script>
+    const noBtn = document.getElementById("no");
 
-<!-- Apology Card -->
-<div class="card">
-    <div class="heart">💔</div>
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
-    <div class="name">Shiza</div>
-
-    <h1>I’m truly sorry</h1>
-
-    <!-- Your adjusted message -->
-    <div class="message">
-        <p>
-            I’m truly sorry for how I behaved. I was angry and frustrated,
-            and I let those emotions control my words. What I said about being
-            with someone else was wrong and untrue. I never did that, and I
-            regret saying it deeply.
-        </p>
-
-        <p>
-            I know my words hurt you, and I take full responsibility.
-            You didn’t deserve that from me.
-        </p>
-
-        <p>
-            I’m not asking you to change anything. I only wanted to apologize
-            sincerely. Wherever life takes you, I hope you’re safe, at peace,
-            and happy. You deserve that.
-        </p>
-
-        <p>Take care.</p>
-    </div>
-
-    <button onclick="showMessage()">I understand 💜</button>
-</div>
-
-<script>
-function startMusic() {
-    document.getElementById("bgMusic").play();
-    document.getElementById("musicOverlay").style.display = "none";
-}
-
-function showMessage() {
-    document.body.innerHTML = `
-        <div style="
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            background:linear-gradient(135deg,#667eea,#764ba2);
-            font-family:'Segoe UI',sans-serif;
-            text-align:center;">
-            <div style="color:white;padding:25px;">
-                <h1>Thank you for reading ❤️</h1>
-                <p style="font-size:18px;">
-                    Whatever you decide, I respect it.
-                </p>
-            </div>
-        </div>
-    `;
-}
-</script>
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
 
 </body>
 </html>
