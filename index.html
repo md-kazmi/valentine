@@ -27,20 +27,29 @@
         max-width: 380px;
         background: white;
         padding: 30px 20px;
-        border-radius: 20px;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        border-radius: 22px;
+        box-shadow: 0 14px 35px rgba(0,0,0,0.25);
         position: relative;
     }
 
     .heart {
-        font-size: 48px;
+        font-size: 50px;
         animation: pulse 1.5s infinite;
     }
 
-    h1 {
-        margin: 15px 0 10px;
+    .name {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 10px 0;
         color: #e63946;
-        font-size: 26px;
+        text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+        animation: glow 2s infinite alternate;
+    }
+
+    h1 {
+        margin: 10px 0;
+        color: #e63946;
+        font-size: 24px;
     }
 
     p {
@@ -92,22 +101,38 @@
         50% { transform: scale(1.2); }
         100% { transform: scale(1); }
     }
+
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 5px #ff7eb3, 0 0 10px #ff7eb3;
+        }
+        to {
+            text-shadow: 0 0 15px #ff758c, 0 0 30px #ff758c;
+        }
+    }
 </style>
 </head>
 
 <body>
 
+<!-- 🎶 Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
 <div class="card">
     <div class="heart">❤️</div>
-    <h1>Hey My Love</h1>
+
+    <!-- ✨ CHANGE HER NAME HERE -->
+    <div class="name">Shiza 💖</div>
 
     <p>
-        From the moment you came into my life, everything changed.
-        You are my smile, my peace, my happiness 💕
+        From the moment you entered my life, everything became brighter.
+        You are my peace, my smile, my forever 💕
     </p>
 
     <p class="question">
-        Will you be my Valentine? 💖
+        Will you be my Valentine? 🌹
     </p>
 
     <div class="buttons">
@@ -118,6 +143,14 @@
 
 <script>
     let noCount = 0;
+
+    // Force autoplay on mobile (after first tap)
+    document.addEventListener("click", () => {
+        const music = document.getElementById("bgMusic");
+        if (music.paused) {
+            music.play();
+        }
+    }, { once: true });
 
     function sayYes() {
         document.body.innerHTML = `
@@ -132,7 +165,7 @@
                 <div style="color:white;padding:20px;">
                     <h1 style="font-size:32px;">Yayyy! ❤️🥰</h1>
                     <p style="font-size:18px;">
-                        You chose YES… and you chose me 💖<br><br>
+                        I knew you’d say YES 💖<br><br>
                         Happy Valentine’s Day, my love 🌹
                     </p>
                 </div>
@@ -144,11 +177,8 @@
         const noBtn = document.getElementById("noBtn");
         noCount++;
 
-        const maxX = 240;
-        const maxY = 40;
-
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+        const x = Math.random() * 230;
+        const y = Math.random() * 40;
 
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
