@@ -6,9 +6,7 @@
 <title>I’m Sorry ❤️</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -22,7 +20,7 @@ body {
     overflow: hidden;
 }
 
-/* 🎶 Music overlay */
+/* Music overlay */
 #musicOverlay {
     position: fixed;
     inset: 0;
@@ -44,10 +42,10 @@ body {
     cursor: pointer;
 }
 
-/* 💌 Card */
+/* Card */
 .card {
     width: 90%;
-    max-width: 380px;
+    max-width: 420px;
     background: white;
     padding: 30px 22px;
     border-radius: 22px;
@@ -55,7 +53,7 @@ body {
 }
 
 .heart {
-    font-size: 46px;
+    font-size: 42px;
     animation: pulse 2s infinite;
 }
 
@@ -74,10 +72,12 @@ h1 {
     font-size: 22px;
 }
 
-p {
-    font-size: 16px;
+.message {
+    font-size: 15px;
     color: #444;
     line-height: 1.6;
+    text-align: left;
+    margin-top: 10px;
 }
 
 button {
@@ -91,7 +91,7 @@ button {
     cursor: pointer;
 }
 
-/* ✨ Animations */
+/* Animations */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.15); }
@@ -107,7 +107,7 @@ button {
 
 <body>
 
-<!-- 🎶 Music Start Screen -->
+<!-- Music Start -->
 <div id="musicOverlay">
     <div>
         <h1>🎧 One Tap</h1>
@@ -116,37 +116,43 @@ button {
     </div>
 </div>
 
-<!-- 🎶 Audio -->
+<!-- Audio -->
 <audio id="bgMusic" loop>
     <source src="love.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 💔 Apology Card -->
+<!-- Apology Card -->
 <div class="card">
     <div class="heart">💔</div>
 
-    <!-- ✨ CHANGE HER NAME HERE -->
     <div class="name">Shiza</div>
 
-    <h1>I’m really sorry…</h1>
+    <h1>I’m truly sorry</h1>
 
-    <p>
-        I know I hurt you, and I won’t make excuses for it.<br><br>
-        You mean more to me than my ego, my mistakes,
-        or my silence ever could.
-    </p>
+    <!-- Your adjusted message -->
+    <div class="message">
+        <p>
+            I’m truly sorry for how I behaved. I was angry and frustrated,
+            and I let those emotions control my words. What I said about being
+            with someone else was wrong and untrue—I never did that, and I
+            regret saying it deeply.
+        </p>
 
-    <p>
-        I miss your smile, your voice, and the way
-        everything feels right when you’re around.
-    </p>
+        <p>
+            I know my words hurt you, and I take full responsibility.
+            You didn’t deserve that from me.
+        </p>
 
-    <p>
-        If there’s even a small place left in your heart,
-        I promise to do better… for you.
-    </p>
+        <p>
+            I’m not asking you to change anything. I only wanted to apologize
+            sincerely. Wherever life takes you, I hope you’re safe, at peace,
+            and happy. You deserve that.
+        </p>
 
-    <button onclick="showMessage()">Please forgive me 💜</button>
+        <p>Take care.</p>
+    </div>
+
+    <button onclick="showMessage()">I understand 💜</button>
 </div>
 
 <script>
@@ -168,9 +174,7 @@ function showMessage() {
             <div style="color:white;padding:25px;">
                 <h1>Thank you for reading ❤️</h1>
                 <p style="font-size:18px;">
-                    No pressure. No expectations.<br><br>
-                    I just wanted you to know<br>
-                    how deeply sorry I am.
+                    Whatever you decide, I respect it.
                 </p>
             </div>
         </div>
